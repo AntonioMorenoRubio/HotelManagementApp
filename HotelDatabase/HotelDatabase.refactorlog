@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="0cf05231-c258-4ade-ac0f-564bd7a99311" ChangeDateTime="03/22/2023 17:10:54">
+    <Property Name="ElementName" Value="[dbo].[Rooms].[RoomType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Rooms]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="07aaf993-ae60-4d93-94d6-4d84de62084a" ChangeDateTime="03/22/2023 17:34:16">
+    <Property Name="ElementName" Value="[dbo].[Reservations].[Client]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Reservations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClientId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5a756cd5-f42b-4b9a-8016-bdb297d9159c" ChangeDateTime="03/22/2023 17:34:19">
+    <Property Name="ElementName" Value="[dbo].[Reservations].[Room]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Reservations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="07ff41ea-191c-4bac-aa31-09d8ef77ed44" ChangeDateTime="03/22/2023 18:01:07">
+    <Property Name="ElementName" Value="[dbo].[Rooms].[Number]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Rooms]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="762af56d-4df1-49b9-92ae-953d18a50880" ChangeDateTime="03/22/2023 18:02:24">
+    <Property Name="ElementName" Value="[dbo].[RoomTypes].[Cost]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomTypes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Price" />
+  </Operation>
+</Operations>
