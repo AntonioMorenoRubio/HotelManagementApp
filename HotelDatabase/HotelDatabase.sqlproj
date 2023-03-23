@@ -60,12 +60,20 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Script" />
     <Folder Include="dbo\PublishProfile" />
+    <Folder Include="dbo\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\RoomTypes.sql" />
     <Build Include="dbo\Tables\Rooms.sql" />
     <Build Include="dbo\Tables\Clients.sql" />
     <Build Include="dbo\Tables\Reservations.sql" />
+    <Build Include="dbo\StoredProcedures\spClient_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spRoomTypes_GetAvailableTypes.sql" />
+    <Build Include="dbo\StoredProcedures\spRooms_GetAvailableRoomsByTypeAndDate.sql" />
+    <Build Include="dbo\StoredProcedures\spReservations_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spReservations_GetTodayReservations.sql" />
+    <Build Include="dbo\StoredProcedures\spReservations_GetTodayReservationsByLastName.sql" />
+    <Build Include="dbo\StoredProcedures\spReservations_CheckInClient.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HotelDatabase.refactorlog" />
