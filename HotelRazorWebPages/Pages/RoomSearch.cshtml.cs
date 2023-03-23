@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using HotelManagementLibrary.Data;
 using HotelManagementLibrary.Databases;
+using HotelManagementLibrary.Interfaces;
 using HotelManagementLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,32 +11,34 @@ namespace HotelApp.Web.Pages
 
     public class RoomSearchModel : PageModel
     {
+        private readonly IDatabaseData db;
+
+        [DataType(DataType.Date)]
+        [BindProperty(SupportsGet = true)]
+        public DateTime StartDate { get; set; } = DateTime.Now;
+        [DataType(DataType.Date)]
+        [BindProperty(SupportsGet = true)]
+        public DateTime EndDate { get; set; } = DateTime.Now.AddDays(1);
         [BindProperty]
-        public DateTime startDate { get; set; }
-        [BindProperty]
-        public DateTime endDate { get; set; }
-        [BindProperty]
-        public List<RoomTypeModel> availableRoomTypes { get; set; } 
+        public List<RoomTypeModel> AvailableRoomTypes { get; set; }
+
+        public RoomSearchModel(IDatabaseData db)
+        {
+            this.db = db;
+        }
 
         public void OnGet()
         {
-            availableRoomTypes = new List<RoomTypeModel>();
-            startDate = DateTime.Today;
-            endDate = DateTime.Today;
+            AvailableRoomTypes = db.GetAvailableRoomTypes(StartDate, EndDate);
         }
 
-        void SearchAvailableRoomTypesByDate()
+        public IActionResult OnPost()
         {
-            SqlData sqlData = new SqlData(new SqlServerDataAccess());
-            availableRoomTypes = sqlData.GetAvailableRoomTypes(startDate, endDate);
-        }
-
-        void UpdateData()
-        {
-            if (availableRoomTypes.Count > 0)
+            return RedirectToPage(new
             {
-
-            }
+                StartDate,
+                EndDate
+            });
         }
     }
 }

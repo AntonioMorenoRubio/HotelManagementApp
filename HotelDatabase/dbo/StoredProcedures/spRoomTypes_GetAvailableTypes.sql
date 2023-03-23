@@ -6,11 +6,13 @@ begin
 	set nocount on;
 
 	select rtypes.Id, rtypes.Title, rtypes.Description, rtypes.Price from RoomTypes rtypes
-	left join Rooms rooms
+	inner join Rooms rooms
 	on rooms.RoomTypeId = rtypes.Id
-	left join Reservations reserves
-	on reserves.RoomId != rooms.Id
-	where (@startDate >= reserves.StartDate and @startDate < reserves.EndDate)
-	or (@endDate > reserves.StartDate and @endDate < reserves.EndDate)
-	group by rtypes.Id, rtypes.Title, rtypes.Description, rtypes.Price
+	where rooms.Id not in (
+	select reserves.RoomId from Reservations reserves
+	where (@startDate < reserves.StartDate and @endDate > reserves.endDate)
+		or (reserves.StartDate <= @endDate and @endDate < reserves.EndDate)
+		or (reserves.StartDate <= @startDate and @startDate < reserves.StartDate)
+	)
+	group by rtypes.Id, rtypes.Title, rtypes.Description, rtypes.Price;
 end

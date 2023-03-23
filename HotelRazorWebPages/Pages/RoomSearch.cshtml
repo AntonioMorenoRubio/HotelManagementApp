@@ -8,12 +8,38 @@
     ViewData["Title"] = "Room Searching";
 }
 
-<form>
-    <input type="date" name="startDateInput" asp-for="startDate"/>
-    <input type="date" name="endDateInput" asp-for="endDate"/>
-    <button type="button" onclick="SearchAvailableRoomTypesByDate">Search Rooms</button>
+<form method="post">
+    <div>
+        <input asp-for="@Model.StartDate"/>
+        <input asp-for="@Model.EndDate"/>
+    </div>
+    <button type="submit" class="btn btn-dark">Search Rooms</button>
 </form>
 
-@{
-    
+@if (Model.AvailableRoomTypes?.Count > 0)
+{
+    <h2>Results:</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Room Type</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var type in Model.AvailableRoomTypes)
+            {
+                <tr>
+                    <td><strong>@type.Title</strong><br />
+                        @type.Description    
+                    </td>
+                    <td>@string.Format("{0:C}", type.Price)</td>
+                    <td>
+                        <a href="">Book Now</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }

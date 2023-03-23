@@ -18,7 +18,7 @@ namespace HotelManagementLibrary.Data
             return db.LoadData<RoomTypeModel, dynamic>(
                 "dbo.spRoomTypes_GetAvailableTypes",
                 new { startDate, endDate },
-                "SQLServer",
+                connectionStringName,
                 true);
         }
 
@@ -46,7 +46,7 @@ namespace HotelManagementLibrary.Data
             RoomTypeModel roomType = db.LoadData<RoomTypeModel, dynamic>(
             "select * from dbo.RoomTypes where Id = @Id",
             new { Id = roomTypeId },
-            "SQLServer",
+            connectionStringName,
             false).First();
 
             //Calculate Final Price

@@ -83,5 +83,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="dbo\PublishProfile\HotelDatabase.publish.xml" />
+    <None Include="dbo\PublishProfile\HotelDB_Laptop.publish.xml" />
   </ItemGroup>
 </Project>
