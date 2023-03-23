@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace HotelManagementLibrary.Databases
 {
-    public class SQLServerDataAccess : ISQLDataAccess
+    public class SqlServerDataAccess : ISqlDataAccess
     {
         public List<T> LoadData<T, U>(string query, U parameters, string connectionStringName, bool isStoredProcedure)
         {

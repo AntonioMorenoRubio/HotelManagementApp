@@ -3,12 +3,12 @@ using HotelManagementLibrary.Models;
 
 namespace HotelManagementLibrary.Data
 {
-    public class SQLData : IDatabaseData
+    public class SqlData : IDatabaseData
     {
-        private readonly ISQLDataAccess db;
+        private readonly ISqlDataAccess db;
         private const string connectionStringName = "SQLServer";
 
-        public SQLData(ISQLDataAccess db)
+        public SqlData(ISqlDataAccess db)
         {
             this.db = db;
         }

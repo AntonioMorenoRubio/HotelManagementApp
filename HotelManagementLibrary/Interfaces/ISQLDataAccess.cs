@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagementLibrary.Interfaces
 {
-    public interface ISQLDataAccess
+    public interface ISqlDataAccess
     {
         List<T> LoadData<T, U>(string query,
                                U parameters,

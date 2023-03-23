@@ -1,0 +1,19 @@
+﻿@page
+@using HotelManagementLibrary.Data;
+@using HotelManagementLibrary.Databases;
+@using HotelManagementLibrary.Models;
+@model HotelApp.Web.Pages.RoomSearchModel
+
+@{
+    ViewData["Title"] = "Room Searching";
+}
+
+<form>
+    <input type="date" name="startDateInput" asp-for="startDate"/>
+    <input type="date" name="endDateInput" asp-for="endDate"/>
+    <button type="button" onclick="SearchAvailableRoomTypesByDate">Search Rooms</button>
+</form>
+
+@{
+    
+}
