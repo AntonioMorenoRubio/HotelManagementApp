@@ -1,10 +1,10 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
 using Dapper;
-using HotelManagementLibrary.Interfaces;
+using HotelLibrary.Interfaces;
 using Microsoft.Extensions.Configuration;
 
-namespace HotelManagementLibrary.Databases
+namespace HotelLibrary.Databases
 {
     public class SqlServerDataAccess : ISqlDataAccess
     {

@@ -1,6 +1,6 @@
-﻿using HotelManagementLibrary.Models;
+﻿using HotelLibrary.Models;
 
-namespace HotelManagementLibrary.Interfaces
+namespace HotelLibrary.Interfaces
 {
     public interface IDatabaseData
     {

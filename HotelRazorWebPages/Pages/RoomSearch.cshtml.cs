@@ -1,8 +1,8 @@
 using System.ComponentModel.DataAnnotations;
-using HotelManagementLibrary.Data;
-using HotelManagementLibrary.Databases;
-using HotelManagementLibrary.Interfaces;
-using HotelManagementLibrary.Models;
+using HotelLibrary.Data;
+using HotelLibrary.Databases;
+using HotelLibrary.Interfaces;
+using HotelLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

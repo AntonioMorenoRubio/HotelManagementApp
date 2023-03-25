@@ -1,13 +1,27 @@
-using HotelManagementLibrary.Data;
-using HotelManagementLibrary.Databases;
-using HotelManagementLibrary.Interfaces;
+using HotelLibrary.Databases;
+using HotelLibrary.Interfaces;
+using HotelLibrary.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddTransient<IDatabaseData, SqlData>();
+
+//Adding Database support by dependency injection
+switch (builder.Configuration.GetValue<string>("DBToUse"))
+{
+    case "SQLServer":
+        builder.Services.AddTransient<IDatabaseData, SqlData>();
+        break;
+    case "SQLite":
+        builder.Services.AddTransient<IDatabaseData, SqliteData>();
+        break;
+    default:
+        builder.Services.AddTransient<IDatabaseData, SqlData>();
+        break;
+}
 builder.Services.AddTransient<ISqlDataAccess, SqlServerDataAccess>();
+builder.Services.AddTransient<ISqliteDataAccess, SqliteDataAccess>();
 
 var app = builder.Build();
 

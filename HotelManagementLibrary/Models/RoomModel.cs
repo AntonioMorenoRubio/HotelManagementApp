@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelManagementLibrary.Models
+namespace HotelLibrary.Models
 {
     public class RoomModel
     {

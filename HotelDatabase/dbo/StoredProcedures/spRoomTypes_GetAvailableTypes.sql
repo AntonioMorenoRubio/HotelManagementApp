@@ -10,7 +10,7 @@ begin
 	on rooms.RoomTypeId = rtypes.Id
 	where rooms.Id not in (
 	select reserves.RoomId from Reservations reserves
-	where (@startDate < reserves.StartDate and @endDate > reserves.endDate)
+	where (@startDate < reserves.StartDate and @endDate > reserves.EndDate)
 		or (reserves.StartDate <= @endDate and @endDate < reserves.EndDate)
 		or (reserves.StartDate <= @startDate and @startDate < reserves.StartDate)
 	)

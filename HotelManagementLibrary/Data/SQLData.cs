@@ -1,7 +1,7 @@
-﻿using HotelManagementLibrary.Interfaces;
-using HotelManagementLibrary.Models;
+﻿using HotelLibrary.Interfaces;
+using HotelLibrary.Models;
 
-namespace HotelManagementLibrary.Data
+namespace HotelLibrary.Data
 {
     public class SqlData : IDatabaseData
     {
@@ -40,7 +40,7 @@ namespace HotelManagementLibrary.Data
             List<RoomModel> availableRooms = db.LoadData<RoomModel, dynamic>(
             "dbo.spRooms_GetAvailableRoomsByTypeAndDate",
             new { startDate, endDate, roomTypeId },
-            "SQLServer",
+            connectionStringName,
             true);
 
             RoomTypeModel roomType = db.LoadData<RoomTypeModel, dynamic>(

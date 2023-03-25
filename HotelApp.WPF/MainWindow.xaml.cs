@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using HotelManagementLibrary.Data;
-using HotelManagementLibrary.Databases;
-using HotelManagementLibrary.Interfaces;
-using HotelManagementLibrary.Models;
+using HotelLibrary.Data;
+using HotelLibrary.Databases;
+using HotelLibrary.Interfaces;
+using HotelLibrary.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -44,7 +44,7 @@ namespace HotelApp.WPF
                 var checkInForm = App.serviceProvider.GetService<CheckInConfirmationWindow>();
                 var model = (ReservationFullModel) ReservationList.SelectedItem;
 
-                
+                checkInForm.PopulateData(model);
                 checkInForm.Show();
             }
         }

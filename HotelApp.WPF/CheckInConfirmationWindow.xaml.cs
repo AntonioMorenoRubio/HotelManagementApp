@@ -12,8 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using HotelManagementLibrary.Interfaces;
-using HotelManagementLibrary.Models;
+using HotelLibrary.Interfaces;
+using HotelLibrary.Models;
 
 namespace HotelApp.WPF
 {
@@ -24,6 +24,7 @@ namespace HotelApp.WPF
     {
         private readonly IDatabaseData db;
         public ReservationFullModel? Reservation { get; set; } = null;
+
 
         public CheckInConfirmationWindow(IDatabaseData db)
         {
@@ -41,13 +42,6 @@ namespace HotelApp.WPF
             StartDateLabel.Content = reservation.StartDate.ToShortDateString();
             EndDateLabel.Content = reservation.EndDate.ToShortDateString();
             PriceLabel.Content = string.Format("{0:C}", reservation.TotalCost);
-
-            ReloadLabels();
-        }
-
-        private void ReloadLabels()
-        {
-            throw new NotImplementedException();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -58,6 +52,7 @@ namespace HotelApp.WPF
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             db.CheckInClientInReservation(Reservation.Id);
+            Close();
         }
     }
 }

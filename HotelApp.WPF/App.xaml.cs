@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows;
-using HotelManagementLibrary.Data;
-using HotelManagementLibrary.Databases;
-using HotelManagementLibrary.Interfaces;
+using HotelLibrary.Databases;
+using HotelLibrary.Interfaces;
+using HotelLibrary.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,17 +18,29 @@ namespace HotelApp.WPF
         {
             base.OnStartup(e);
 
+            var builder = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json");
+
+            IConfiguration config = builder.Build();
+
             var services = new ServiceCollection();
             services.AddTransient<MainWindow>();
             services.AddTransient<CheckInConfirmationWindow>();
-            services.AddTransient<ISqlDataAccess, SqlServerDataAccess>();
-            services.AddTransient<IDatabaseData, SqlData>();
 
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-
-            IConfiguration config = builder.Build();
+            switch (config.GetValue<string>("DBToUse"))
+            {
+                case "SQLServer":
+                    services.AddTransient<ISqlDataAccess, SqlServerDataAccess>();
+                    services.AddTransient<IDatabaseData, SqlData>();
+                    break;
+                case "SQLite":
+                    services.AddTransient<ISqliteDataAccess, SqliteDataAccess>();
+                    services.AddTransient<IDatabaseData, SqliteData>();
+                    break;
+                default:
+                    break;
+            }
 
             services.AddSingleton(config);
 

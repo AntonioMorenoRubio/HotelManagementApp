@@ -1,5 +1,5 @@
-using HotelManagementLibrary.Interfaces;
-using HotelManagementLibrary.Models;
+using HotelLibrary.Interfaces;
+using HotelLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
