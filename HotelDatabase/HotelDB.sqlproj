@@ -74,6 +74,7 @@
     <Build Include="dbo\StoredProcedures\spReservations_GetTodayReservations.sql" />
     <Build Include="dbo\StoredProcedures\spReservations_GetTodayReservationsByLastName.sql" />
     <Build Include="dbo\StoredProcedures\spReservations_CheckInClient.sql" />
+    <Build Include="dbo\StoredProcedures\spRoomTypes_GetById.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="HotelDatabase.refactorlog" />

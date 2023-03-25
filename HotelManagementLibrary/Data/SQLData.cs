@@ -38,7 +38,7 @@ namespace HotelManagementLibrary.Data
 
             //Find first Room of Type Available for Dates Indicated
             List<RoomModel> availableRooms = db.LoadData<RoomModel, dynamic>(
-            "dbo.spRooms_GetFirstRoomAvailableByTypeAndDate",
+            "dbo.spRooms_GetAvailableRoomsByTypeAndDate",
             new { startDate, endDate, roomTypeId },
             "SQLServer",
             true);
@@ -53,7 +53,7 @@ namespace HotelManagementLibrary.Data
             decimal totalCost = endDate.Date.Subtract(startDate.Date).Days * roomType.Price;
 
             db.SaveData<ReservationModel, dynamic>(
-                "dbo.spReservation_Insert",
+                "dbo.spReservations_Insert",
                 new
                 {
                     clientId = client.Id,
@@ -90,9 +90,17 @@ namespace HotelManagementLibrary.Data
         public void CheckInClientInReservation(int reservationId)
         {
             db.SaveData<ReservationModel, dynamic>("dbo.spReservations_CheckInClient",
-                                                   new { Id = reservationId },
+                                                   new { id = reservationId },
                                                    connectionStringName,
                                                    true);
+        }
+
+        public RoomTypeModel GetRoomTypeById(int roomTypeId)
+        {
+            return db.LoadData<RoomTypeModel, dynamic>("dbo.spRoomTypes_GetById",
+                                                       new { id = roomTypeId },
+                                                       connectionStringName,
+                                                       true).FirstOrDefault();
         }
     }
 }
